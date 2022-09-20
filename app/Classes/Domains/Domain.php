@@ -83,4 +83,12 @@ class Domain extends Request{
         $response = $this->domainRequest('delete',$domain.'/cname-setup/custom',[]);
         return $this->checkResponse(200);
     }
+
+        // Convert domain setup to cname
+    // Cname setup can be used with sub domain
+    public function convertToCname($domain){
+
+        $response = $this->clientRequest('post',$domain.'/cname-setup/convert',[]);
+        return $this->checkResponse(200);
+    }
 }
