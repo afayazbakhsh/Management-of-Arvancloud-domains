@@ -98,4 +98,13 @@ class Domain extends Request{
         $response = $this->domainRequest('get',$domain.'/cname-setup/check',[]);
         return $this->checkResponse(200);
     }
+
+    // Clone a domain config from another one
+    public function cloneConfig($domain,Request $request){
+
+        $data = ["from"=>$request->from];
+
+        $response = $this->domainRequest('post',$domain.'/clone',$data);
+        return $response;
+    }
 }
