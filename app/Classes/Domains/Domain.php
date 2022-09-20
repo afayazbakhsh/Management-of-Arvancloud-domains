@@ -59,4 +59,11 @@ class Domain extends Request{
         $response = $this->domainRequest('delete',$domain.'/ns-keys',[]);
         return $this->checkResponse(200);
     }
+
+    //check activity domains
+    public function ActivityDomain($domain){
+
+        $response = $this->domainRequest('get',$domain.'/ns-keys/check',[]);
+        return $response['data'];
+    }
 }
