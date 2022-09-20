@@ -88,7 +88,14 @@ class Domain extends Request{
     // Cname setup can be used with sub domain
     public function convertToCname($domain){
 
-        $response = $this->clientRequest('post',$domain.'/cname-setup/convert',[]);
+        $response = $this->domainRequest('post',$domain.'/cname-setup/convert',[]);
+        return $this->checkResponse(200);
+    }
+
+    // Check Cname Setup to find whether domain is activated
+    public function checkCnameForActivity($domain){
+
+        $response = $this->domainRequest('get',$domain.'/cname-setup/check',[]);
         return $this->checkResponse(200);
     }
 }
