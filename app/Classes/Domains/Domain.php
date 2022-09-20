@@ -1,7 +1,13 @@
 <?php
-namespace App\Classes\Domains;
+namespace App\Classes;
+use App\Classes\Request;
 
+class Domain extends Request{
 
-class Domain{
+        // Get All Domains
+    public function getAllDomains(){
 
+        $response = $this->domainRequest('get','',[]);
+        return $this->checkResponse(200);
+    }
 }
