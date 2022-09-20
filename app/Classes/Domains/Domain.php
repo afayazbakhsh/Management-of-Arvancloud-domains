@@ -17,4 +17,13 @@ class Domain extends Request{
         $response = $this->domainRequest('get',$domain.'',[]);
         return $this->checkResponse(200);
     }
+
+    // Create domains
+    public function createDomain($request){
+
+        $data = ["domain" => $request->domain,"domain_type" => "full"];
+        $response = $this->domainRequest('post','/dns-service',$data);
+        return $this->checkResponse(201);
+    }
+
 }
