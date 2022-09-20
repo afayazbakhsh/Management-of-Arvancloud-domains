@@ -10,4 +10,11 @@ class Domain extends Request{
         $response = $this->domainRequest('get','',[]);
         return $this->checkResponse(200);
     }
+
+    //get domain data by domain address
+    public function getByDomain($domain){
+
+        $response = $this->domainRequest('get',$domain.'',[]);
+        return $this->checkResponse(200);
+    }
 }
