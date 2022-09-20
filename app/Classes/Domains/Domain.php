@@ -37,7 +37,7 @@ class Domain extends Request{
 
             $data = ["id" => $domainData['data']['id'],];
             $response = $this->domainRequest('delete',$domain,$data);
-            return $this->checkResponse(201);
+            return $this->checkResponse(200);
         }else{
 
             return response("Domain Not Found",404);
@@ -50,6 +50,13 @@ class Domain extends Request{
         $data = ["ns_keys" => [$request->ns_keys[0],$request->ns_keys[1]]];
 
         $response = $this->domainRequest('put',$domain.'/ns-keys',$data);
-        return $this->checkResponse(201);
+        return $this->checkResponse(200);
+    }
+
+    //Reset custom Nameserver keys to the default values for the domain
+    public function resetDomain($domain){
+
+        $response = $this->domainRequest('delete',$domain.'/ns-keys',[]);
+        return $this->checkResponse(200);
     }
 }
