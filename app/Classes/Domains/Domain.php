@@ -26,4 +26,21 @@ class Domain extends Request{
         return $this->checkResponse(201);
     }
 
+
+
+    //Delete domain
+    public function deleteDomain($domain){
+
+        $domainData = $this->getByDomain($domain);
+
+        if($domainData['data']['id']){
+
+            $data = ["id" => $domainData['data']['id'],];
+            $response = $this->domainRequest('delete',$domain,$data);
+            return $this->checkResponse(201);
+        }else{
+
+            return response("Domain Not Found",404);
+        }
+    }
 }
