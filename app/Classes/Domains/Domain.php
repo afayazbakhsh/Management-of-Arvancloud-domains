@@ -43,4 +43,13 @@ class Domain extends Request{
             return response("Domain Not Found",404);
         }
     }
+
+    // Update domains
+    public function updateDomain($request,$domain){
+
+        $data = ["ns_keys" => [$request->ns_keys[0],$request->ns_keys[1]]];
+
+        $response = $this->domainRequest('put',$domain.'/ns-keys',$data);
+        return $this->checkResponse(201);
+    }
 }
