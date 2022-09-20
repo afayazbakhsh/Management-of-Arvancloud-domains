@@ -66,4 +66,13 @@ class Domain extends Request{
         $response = $this->domainRequest('get',$domain.'/ns-keys/check',[]);
         return $response['data'];
     }
+
+    // Set a custom record for using CNAME Setup
+    //this option need Enterprise plan
+    public function cnameSetup($request, $domain){
+
+        $data = ["address" => $request->address];
+        $response = $this->domainRequest('put',$domain.'/cname-setup/custom',$data);
+        return $this->checkResponse(200);
+    }
 }
