@@ -75,4 +75,12 @@ class Domain extends Request{
         $response = $this->domainRequest('put',$domain.'/cname-setup/custom',$data);
         return $this->checkResponse(200);
     }
+
+    //Reset the custom record of CNAME Setup to the default value
+    //this option need Enterprise plan
+    public function resetCnameSetup($domain){
+
+        $response = $this->domainRequest('delete',$domain.'/cname-setup/custom',[]);
+        return $this->checkResponse(200);
+    }
 }
